@@ -1,1 +1,15 @@
-**/__pycache__/
+books/__pycache__/
+bookstore/__pycache__/
+comments/__pycache__/
+main/__pycache__/
+orders/__pycache__/
+requestedbook/__pycache__/
+users/__pycache__/
+books/migrations/
+comments/migrations/
+main/migrations/
+orders/migrations/
+requestedbook/migrations/
+users/migrations/
+.gitignore
+db.sqlite3
