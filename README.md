@@ -32,7 +32,9 @@ P.S. comments, main, orders, requestedbook, users have the similar folder struct
 
 ## Examples:
 ![Index](examples/index.png)
-![Books List](examples/books-list.png)
-![Users Signup Page](examples/users-signup.png)
+
+![Books List](examples/books_list.png)
+
+![Users Signup Page](examples/users_signup.png)
 
 Updated: 18th July 2023
