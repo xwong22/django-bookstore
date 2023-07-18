@@ -1,0 +1,104 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    {% for message in messages %}
+        <div class="alert alert-info" role="alert">
+        {{ message }}
+        </div>
+    {% endfor %}
+
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1>Book Detail</h1>
+
+            <p>ID: {{ object.id }}</p>
+            <img src="{{ object.photoURL }}" class="pic2" alt="{{ object.bookname }}" />
+            <p>Bookname: {{ object.bookname }}</p>
+            <p>ISBN: {{ object.isbn }}</p>
+            <p>Author: {{ object.author }}</p>
+            <p>Publisher: {{ object.publisher }}</p>
+            <p>Date Published: {{ object.publishedDate }}</p>
+            <p>Genre: {{ object.genre }}</p>
+            <p>Quantity Left: {{ object.quantityLeft }}</p>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            {% if user.is_authenticated and not user.is_superuser %}
+                {% include 'orders/order_create.html' %}
+            {% endif %}
+        </div>
+    </div>
+
+    
+    <br>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h2>Comments</h2>
+
+            <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                <div class="card-body p-4">
+                {% comment %} <div class="form-outline mb-4">
+                    <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+                    <label class="form-label" for="addANote">+ Add a note</label>
+                </div> {% endcomment %}
+
+                {% if commentSet %}
+                    {% for comment in commentSet %}
+                        <div class="card mb-4">
+                            <div class="card-body">
+                            <p>{{ comment.content }}</p>
+                
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex flex-row align-items-center">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" alt="avatar" width="25"
+                                    height="25" />
+                                <p class="small mb-0 ms-2">{{ comment.user.username }}</p>
+                                </div>
+                                <div class="d-flex flex-row align-items-center">
+                                    <p class="small text-muted mb-0">Posted on: {{ comment.publishedDate }}</p>
+                                {% comment %} <p class="small text-muted mb-0">Upvote?</p>
+                                <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                                <p class="small text-muted mb-0">3</p> {% endcomment %}
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                {% else %}
+                    <p>There are no comments.</p>
+                {% endif %}
+        
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+    <br>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            {% if user.is_authenticated and not user.is_superuser %}
+                {% include 'comments/comment_create.html' %}
+            {% endif %}
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6">
+        <a href="{% url 'books:book-list' %}">All Books</a>
+        </div>
+    </div>
+
+{% endblock %}

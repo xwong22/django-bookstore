@@ -1,0 +1,164 @@
+{% extends 'main/base.html' %}
+
+{%block content%}
+
+
+
+{% for message in messages %}
+  <div class="alert alert-info" role="alert">
+    {{ message }}
+  </div>
+{% endfor %}
+
+
+<!-- New Books -->
+<div class="home-section">
+  <h1 class="home-title">New Books</h1>
+
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>Click on the book cover to view the details of the book.</p>
+    </blockquote>
+  </figure>
+  
+  
+  <div id="carouselExampleControls" class="carousel slide m-auto w-50" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <a href="{{ firstrecent.get_absolute_url }}">
+          <img src="{{ firstrecent.photoURL }}" class="w-100 pic" alt="{{ firstrecent.bookname }}"/>
+        </a>
+      </div>
+      {% for book in recent_4_books %}
+        <div class="carousel-item">
+          <a href="{{ book.get_absolute_url }}">
+            <img src="{{ book.photoURL }}" class="w-100 pic" alt="{{ book.bookname }}" />
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+{% comment %} <!-- Top Selling -->
+<div class="home-section px-5">
+  <h1 class="home-title">Top Selling</h1>
+  <div class="col d-flex ">
+    <div class="col-sm d-flex justify-content-center align-items-center mx-5">
+      <a href="#" class="top-selling-btn">
+        <img class="w-100 pic2"
+          src="https://ts1.cn.mm.bing.net/th/id/R-C.2d4a610fbd472f8097816766c8180962?rik=%2frJGp8f1LP%2bz8g&riu=http%3a%2f%2fwallpapercave.com%2fwp%2fkVlGlI9.jpg&ehk=34w8UOCiZg%2b0KDeOazrq1SzsQOMHrqrBaN%2bTDRNw9dk%3d&risl=&pid=ImgRaw&r=0" />
+        <div class="top-selling-text">Book Title</div>
+      </a>
+    </div>
+    <div class="col-sm d-flex justify-content-center align-items-center mx-5">
+      <a href="#" class="top-selling-btn">
+        <img class="w-100 pic2"
+          src="https://www.rxwallpaper.site/wp-content/uploads/one-piece-ace-wallpaper-69-images-avec-anime-one-piece-idees-et-800x800.jpg" />
+        <div class="top-selling-text">Book Title</div>
+      </a>
+    </div>
+    <div class="col-sm d-flex justify-content-center align-items-center mx-5">
+      <a href="#" class="top-selling-btn">
+        <img class="w-100 pic2"
+          src="https://tse2-mm.cn.bing.net/th/id/OIP-C.mHCwSXOF39pIvKNGqcgEwwHaEK?w=282&h=180&c=7&r=0&o=5&pid=1.7" />
+        <div class="top-selling-text">Book Title</div>
+      </a>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+<!-- Genre -->
+<div class="home-section px-5">
+  <h1 class="home-title">View by genre</h1>
+  <figure class="text-center">
+    <blockquote class="blockquote">
+      <p>Click on the book cover to view the details of the book.</p>
+    </blockquote>
+    <blockquote class="blockquote">
+      <p>Click on the genre to view all books of the genre.</p>
+    </blockquote>
+  </figure>
+  <br>
+  <div class="col d-flex ">
+    
+    <!-- Horror Genre  -->
+    <div class="col-md row d-flex justify-content-center align-items-center mx-5">
+      <div id="genreControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="{{ firsthorror.get_absolute_url }}">
+              <img src="{{ firsthorror.photoURL }}" class="pic2 w-100" alt="{{ firsthorror.bookname }}" />
+            </a>
+          </div>
+          {% for horrorbook in horror_2_books %}
+            <div class="carousel-item">
+              <a href="{{ horrorbook.get_absolute_url }}">
+                <img src="{{ horrorbook.photoURL }}" class="pic2 w-100" alt="{{ horrorbook.bookname }}" />
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genre-text"><a href="{% url 'books:book-horror-list' %}">Horror</a></div>
+    </div>
+    <!--end Horror genre -->
+
+    <!-- Romance Genre  -->
+    <div class="col-md row d-flex justify-content-center align-items-center mx-5">
+      <div id="genreControls2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="{{ firstromance.get_absolute_url }}">
+              <img src="{{ firstromance.photoURL }}" class="pic2 w-100" alt="{{ firstromance.bookname }}" />
+            </a>
+          </div>
+          {% for romancebook in romance_2_books %}
+            <div class="carousel-item">
+              <a href="{{ romancebook.get_absolute_url }}">
+                <img class="pic2 w-100" src="{{ romancebook.photoURL }}" alt="{{ romancebook.bookname }}" />
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genre-text"><a href="{% url 'books:book-romance-list' %}">Romance</a></div>
+    </div>
+    <!-- end Romance Genre  -->
+
+    <!-- Adventure Genre  -->
+    <div class="col-md row d-flex justify-content-center align-items-center mx-5">
+      <div id="genreControls3" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <a href="{{ firstadventure.get_absolute_url }}">
+              <img src="{{ firstadventure.photoURL }}" class="pic2 w-100" alt="{{ firstadventure.bookname }}" />
+            </a>
+          </div>
+          {% for adventurebook in adventure_2_books %}
+            <div class="carousel-item">
+              <a href="{{ adventurebook.get_absolute_url }}">
+                <img src="{{ adventurebook.photoURL }}" class="pic2 w-100" alt="{{ adventurebook.bookname }}" />
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="genre-text"><a href="{% url 'books:book-adventure-list' %}">Adventure</a></div>
+    </div>
+  </div>
+  <!-- end Adventure Genre  -->
+</div>
+
+<div class="home-section px-5">
+  <h1 class="home-title"><a href="{% url 'books:book-list' %}">Click here for all books</a></h1>
+</div>
+{% endblock %}

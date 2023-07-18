@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<form class="container" action='.' method='POST'>
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="column">
+            <h1> Do you want to delete this request?</h1>
+        </div>
+    </div>
+
+    <div class="row mt-1">
+        <div class="column">Requested Book: {{ object.RBName }}</div>
+    </div>
+
+    <div class="row mt-1">
+        <div class="column">Author: {{ object.RBAuthor }}</div>
+    </div>
+    
+    <div class="row mt-1">
+        <div class="column">Quantity: {{ object.Quantity }}</div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="column">
+            <button class="btn btn-dark" style="text-align:left;" type="submit">Yes</button>
+            <a class="btn btn-dark" href='../../'> Cancel</a>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

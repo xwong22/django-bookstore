@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Requested Book List</h1>
+<div class="list px-10">
+    <table
+      class="table table-color table-striped table-hover table-responsive"
+    >
+      <thead>
+        <tr>
+            <th scope="col">Request ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Book Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Quantity</th>
+            <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- single history-->
+        {% for instance in object_list %}
+            <tr>
+            <td>{{ instance.pk }}</td>
+            <td>{{ instance.user.username }}</td>
+            <td>{{ instance.RBName }}</td>
+            <td>{{ instance.RBAuthor }}</td>
+            <td>{{ instance.Quantity }}</td>
+            <td><a href="{% url 'requestedbook:requestedbook-delete' instance.id %}">delete</a></td>
+            </tr>
+            
+        {% endfor %}
+        <!------>
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+
+

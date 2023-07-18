@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% extends 'main/base.html' %}
+
+<head>
+    <title>
+        Sign Up Page
+    </title>
+</head>
+
+{% block content %}
+
+<body>
+    <h1>Create new user</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <table border="3">
+            {{form}}
+        </table>
+        <button type="submit" value="register">Register</button>
+        <a href="{% url 'users:loginuser' %}">Log in</a>
+    </form>
+    <h1 style="color:red">{{Error}}</h1>
+    <h1 style="color:green">{{Info}}</h1>
+</body>
+
+{% endblock %}

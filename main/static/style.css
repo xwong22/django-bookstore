@@ -1,0 +1,121 @@
+body {
+    background-color: aliceblue;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    object-fit: cover;
+}
+
+/* home */
+.home-section {
+    width: 80%;
+    margin: 30px auto 20px auto;
+}
+
+
+.home-title {
+    color: cornflowerblue;
+    padding: 10px;
+    text-align: center;
+}
+
+.pic {
+    height: 400px;
+}
+
+.pic2{
+    height: 200px;
+}
+
+.top-selling-btn:hover , .genre-btn:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.top-selling-text, .genre-text {
+    text-align: center;
+    font-size: 16pt;
+    color: black;
+}
+
+.home-more-genre {
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+
+/* commentlist */
+
+.words {
+    width: 350px;
+  }
+ 
+
+.list img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+.list span {
+vertical-align: top;
+}
+
+.table a {
+    color: black;
+    display: block;
+  }
+  
+.table a:hover {
+text-decoration: underline;
+cursor: pointer;
+}
+
+.admin-table-btn {
+    background-color: var(--dark-brown);
+    color: var(rgb(18, 83, 180));
+    border: none;
+    border-color: crimson;
+    border-radius: 5px;
+    width: 70px;
+    margin: 5px;
+    float: right;
+  }
+
+  .addtocart-table-btn {
+    background-color: var(--dark-brown);
+    color: var(rgb(18, 83, 180));
+    border: line;
+    border-color: gray;
+    border-radius: 5px;
+    width: 70px;
+    margin: 5px;
+    float: left;
+  }
+
+  .delete-table-btn {
+    background-color: var(--dark-brown);
+    color: var(rgb(18, 83, 180));
+    border: line;
+    border-radius: 5px;
+    width: 70px;
+    margin: 5px;
+    float: right;
+  }
+  
+.admin-table-btn:hover {
+background-color: rgb(114, 114, 114);
+}
+
+.submit-btn{
+float:right
+}

@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    {% for message in messages %}
+      <div class="alert alert-info" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    <h1>Order List</h1>
+
+    {% if user.is_superuser %}
+        <a href="{% url 'orders:order-query' %}">Search Order</a>
+    {% endif %}
+
+    <br>
+    <br>
+
+    <div class="list px-10">
+        <table
+          class="table table-color table-striped table-hover table-responsive"
+        >
+          <thead>
+            <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Ordered Book Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Timestamp</th>
+                <th scope="col">Is Completed</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- single history-->
+            {% for instance in object_list %}
+                <tr>
+                <td>{{ instance.id }}</td>
+                <td><a href="{{ instance.get_absolute_url }}">{{ instance.bookID.bookname }}</a></td>
+                <td>{{ instance.quantity }}</td>
+                <td>{{ instance.timestamp }}</td>
+                <td>{{ instance.completed }}</td>
+  
+                {% if user.is_superuser %}
+  
+                  
+                  {% if not instance.completed %}
+                  <td>
+                      <form action="{% url 'orders:order-complete' instance.id %}" method="POST">
+                          {% csrf_token %}
+                          <input type="submit" value="Mark as completed">
+                      </form>
+                  </td>
+                  {% else %}
+                      <td></td>
+                  {% endif %}
+                  
+                  <td><a href="{% url 'orders:order-delete' pk=instance.id %}">Delete Order</a></td>
+
+                {% else %}
+                  {% if not instance.completed %}
+                    <td>
+                      <form action="{% url 'orders:order-rush' instance.id %}" method="POST">
+                        {% csrf_token %}
+                        <input type="submit" value="Rush Order">
+                      </form>
+                    </td>
+                  {% endif %}
+                    <td><a href="{% url 'orders:order-update' pk=instance.id %}">Update Order</a></td>
+                    <td><a href="{% url 'orders:user-order-delete' pk=instance.id %}">Delete Order</a></td>
+                {% endif %}
+                    
+                </tr>
+  
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    
+
+{% endblock %}

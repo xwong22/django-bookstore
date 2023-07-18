@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>Comment List</h1>
+
+<div class="list px-10">
+    <table
+      class="table table-color table-striped table-hover table-responsive"
+    >
+      <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Users</th>
+            <th scope="col">Comment</th>
+            {% comment %} <th scope="col">Likes</th> {% endcomment %}
+            <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- single history-->
+        {% for instance in object_list %}
+        <tr>
+            <td>{{ instance.pk }}</td>
+            <td>{{ instance.user.username }}</td>
+            <td>{{ instance.content }}</td>
+            {% comment %} <td>{{ instance.likes }}</td> {% endcomment %}
+            <td><a href="{% url 'comments:comment-delete' instance.id %}">delete</a></td>
+        </tr>
+        {% endfor %}
+      <!------>
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+

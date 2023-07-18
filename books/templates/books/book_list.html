@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1>Book List</h1>
+
+    <a href="{% url 'books:book-query' %}">Search Book</a>
+
+    {% if user.is_superuser %}
+        <a href="{% url 'books:book-create' %}">Add Book</a>
+    {% endif %}
+    
+
+    <br>
+    <br>
+
+    {% if not user.is_superuser %}
+      <p>Click on the book name to view details of the book and place your order.</p>
+    {% endif %}
+
+    <div class="list px-10">
+      <table
+        class="table table-color table-striped table-hover table-responsive"
+      >
+        <thead>
+          <tr>
+              <th scope="col">Book ID</th>
+              <th scope="col">Book Cover</th>
+              <th scope="col">Book Name</th>
+              <th scope="col">ISBN</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Quantity Left</th>
+              {% if user.is_superuser %}
+                <th scope="col"></th>
+                <th scope="col"></th>
+              {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          <!-- single history-->
+          {% for instance in object_list %}
+              <tr>
+              <td>{{ instance.id }}</td>
+              <td scope='col'><img src="{{ instance.photoURL }}" alt="{{ instance.bookname }}" /></td>
+              <td><a href="{{ instance.get_absolute_url }}">{{ instance.bookname }}</a></td>
+              <td>{{ instance.isbn }}</td>
+              <td>{{ instance.genre }}</td>
+              <td>{{ instance.quantityLeft }}</td>
+
+              {% if user.is_superuser %}
+
+                <td><a href="{% url 'books:book-update' pk=instance.id %}">Update Book</a></td>
+                <td><a href="{% url 'books:book-delete' pk=instance.id %}">Delete Book</a></td>
+
+              {% endif %}
+              </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
+    
+
+{% endblock %}

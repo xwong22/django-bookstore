@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    <p>ID: {{ object.id }}</p>
+    <p>Book ID: {{ object.bookID }}</p>
+    <p>Quantity: {{ object.quantity }}</p>
+    <p>Timestamp: {{ object.timestamp }}</p>
+    <p>Current status: 
+        {% if object.completed %}
+        Completed
+        {% else %}
+        Not Completed
+        {% endif %}
+    </p>
+
+    <br></br>
+
+{% endblock %}

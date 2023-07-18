@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+{% for message in messages %}
+  <div class="alert alert-info" role="alert">
+    {{ message }}
+  </div>
+{% endfor %}
+
+<form action ='.' method='POST'> {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='Save' /> 
+</form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    <form action="." method="POST">
+        {% csrf_token %}
+        <h1>Do you want to delete the order "{{ object }}"?</h1>
+        <input type="submit" value="Yes">
+        {% if user.is_superuser %}
+            <a href="{% url 'orders:order-list' %}">Cancel</a>
+        {% else %}
+            <a href="{% url 'orders:user-order-list' %}">Cancel</a>
+        {% endif %}
+    </form>
+
+{% endblock %}

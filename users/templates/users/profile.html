@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'main/base.html' %}
+
+{% block title %}
+Profile Page
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    {% for message in messages %}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
+
+    <h1>Profile of {{user.username}}</h1>
+    <p>Email: {{ user.email }}</p>
+    {% for profile in user.profile.all %}
+        <p>Phone Number: {{profile.phone_number}}</p>
+        <p>Address: {{profile.address}}</p>
+    {% endfor %}   
+    
+    <a href="{% url 'users:profile_update' %}">Update phone number and address</a>
+
+    <br>
+    <br>
+
+    {% if not user.is_superuser %}
+        <h2>Orders</h2>
+        <p>Click here to go to <a href="{% url 'orders:user-order-list' %}">My Orders</a></p
+    {% endif %}
+{% else %}
+    <h1>Please log in or register to view this page</h1>
+{% endif %}
+{% endblock %}

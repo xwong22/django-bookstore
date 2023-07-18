@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h1>User List</h1>
+<div class="list px-10">
+    <table
+      class="table table-color table-striped table-hover table-responsive"
+    >
+      <thead>
+        <tr>
+            <th scope="col">User ID</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Address</th>
+            <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- single history-->
+        {% for instance in object_list %}
+            <tr>
+            <td>{{ instance.pk }}</td>
+            <td>{{ instance.username }}</td>
+            <td>{{ instance.email }}</td>
+            {% for profile in instance.profile.all %}
+                <td>{{ profile.phone_number }}</td>
+                <td>{{ profile.address }}</td>
+            {% endfor %}
+            <td><a href="{% url 'users:user-delete' instance.id %}">delete</a></td>
+            </tr>
+            
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+
+
