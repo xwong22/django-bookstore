@@ -30,5 +30,9 @@ For a brief summary report of the DBMS, you may refer to "A Brief Summary Report
 
 P.S. comments, main, orders, requestedbook, users have the similar folder structure as books because they are all django apps.
 
+## Examples:
+![Index](examples/index.png)
+![Index](examples/books-list.png)
+![Index](examples/users-signup.png)
 
 Updated: 18th July 2023
