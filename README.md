@@ -2,6 +2,8 @@
 
 This is our team's d3.js project for our 2022 Database Systems class at Peking University.
 
+For a brief summary report of the DBMS, you may refer to "A Brief Summary Report of the Database Management System.pdf" (the report is in Chinese, the attached guides in the same pdf are in English)
+
 ## A basic introduction for the folders and files:
 
 * bookstore
@@ -28,5 +30,9 @@ This is our team's d3.js project for our 2022 Database Systems class at Peking U
 
 P.S. comments, main, orders, requestedbook, users have the similar folder structure as books because they are all django apps.
 
+## Examples:
+![Index](examples/index.png)
+![Books List](examples/books-list.png)
+![Users Signup Page](examples/users-signup.png)
 
 Updated: 18th July 2023
