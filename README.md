@@ -1,6 +1,6 @@
 # Bookstore Database Management System using Python & Django
 
-This is our team's d3.js project for our 2022 Database Systems class at Peking University. ;)
+This is our team's d3.js project for our 2022 Database Systems class at Peking University. :))
 
 For a brief summary report of the DBMS, you may refer to "A Brief Summary Report of the Database Management System.pdf" (the report is in Chinese, the attached guides in the same pdf are in English)
 
